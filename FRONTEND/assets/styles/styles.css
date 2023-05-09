@@ -1,0 +1,501 @@
+/* 
+██████  ██       ██████  ██████   █████  ██      ███████ ███████ 
+██       ██      ██    ██ ██   ██ ██   ██ ██      ██      ██      
+██   ███ ██      ██    ██ ██████  ███████ ██      █████   ███████ 
+██    ██ ██      ██    ██ ██   ██ ██   ██ ██      ██           ██ 
+ ██████  ███████  ██████  ██████  ██   ██ ███████ ███████ ███████  */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+:root {
+    --background-color: #0167ac;
+    --background-sidebar: rgba(0, 0, 0, 0.2);
+    --background-form: #e6e9f7;
+    --textoPlano: #ffff;
+    --placeholders: #979797;
+    --background-widgets: #B7EAFA;
+    --background-inputs: #0167ac;
+    --blanco: #FFFFFF;
+    --negro: #000;
+    --buttonHoverText: #4f46e5;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: var(--background-color);
+
+}
+
+p,
+a {
+    color: var(--textoPlano);
+}
+
+a {
+    display: block;
+}
+
+
+/* 
+███    ███  █████  ██ ███    ██      ██████  ██████  ███    ██ ████████  █████  ██ ███    ██ ███████ ██████  
+████  ████ ██   ██ ██ ████   ██     ██      ██    ██ ████   ██    ██    ██   ██ ██ ████   ██ ██      ██   ██ 
+██ ████ ██ ███████ ██ ██ ██  ██     ██      ██    ██ ██ ██  ██    ██    ███████ ██ ██ ██  ██ █████   ██████  
+██  ██  ██ ██   ██ ██ ██  ██ ██     ██      ██    ██ ██  ██ ██    ██    ██   ██ ██ ██  ██ ██ ██      ██   ██ 
+██      ██ ██   ██ ██ ██   ████      ██████  ██████  ██   ████    ██    ██   ██ ██ ██   ████ ███████ ██   ██  */
+
+
+.wrapper {
+    margin: 0 300px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-areas: "a b";
+    justify-items: flex-start;
+    align-items: flex-start;
+}
+
+/*   
+   ██████  ███████ ███    ██ ███████ ██████   █████  ██           ██████  ██████  ███    ██ ████████  █████  ██ ███    ██ ███████ ██████  
+  ██       ██      ████   ██ ██      ██   ██ ██   ██ ██          ██      ██    ██ ████   ██    ██    ██   ██ ██ ████   ██ ██      ██   ██ 
+  ██   ███ █████   ██ ██  ██ █████   ██████  ███████ ██          ██      ██    ██ ██ ██  ██    ██    ███████ ██ ██ ██  ██ █████   ██████  
+  ██    ██ ██      ██  ██ ██ ██      ██   ██ ██   ██ ██          ██      ██    ██ ██  ██ ██    ██    ██   ██ ██ ██  ██ ██ ██      ██   ██ 
+   ██████  ███████ ██   ████ ███████ ██   ██ ██   ██ ███████      ██████  ██████  ██   ████    ██    ██   ██ ██ ██   ████ ███████ ██   ██ 
+   */
+.gContainer {
+    grid-area: b;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+
+}
+
+/*   
+  ███████ ██ ██████  ███████     ██████   █████  ██████  
+  ██      ██ ██   ██ ██          ██   ██ ██   ██ ██   ██ 
+  ███████ ██ ██   ██ █████       ██████  ███████ ██████  
+       ██ ██ ██   ██ ██          ██   ██ ██   ██ ██   ██ 
+  ███████ ██ ██████  ███████     ██████  ██   ██ ██   ██ 
+                                                          */
+
+
+
+.fa-2x {
+    font-size: 2em;
+}
+
+.fa {
+    position: relative;
+    display: table-cell;
+    width: 60px;
+    height: 36px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+
+.main-menu:hover,
+nav.main-menu.expanded {
+    width: 250px;
+    overflow: visible;
+}
+
+.main-menu {
+    background: #212121;
+    border-right: 1px solid #e5e5e5;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    width: 60px;
+    overflow: hidden;
+    -webkit-transition: width .05s linear;
+    transition: width .05s linear;
+    -webkit-transform: translateZ(0) scale(1, 1);
+    z-index: 1000;
+}
+
+.main-menu>ul {
+    margin: 7px 0;
+}
+
+.main-menu li {
+    position: relative;
+    display: block;
+    width: 250px;
+}
+
+.main-menu li>a {
+    position: relative;
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: #999;
+    font-family: arial;
+    font-size: 14px;
+    text-decoration: none;
+    -webkit-transform: translateZ(0) scale(1, 1);
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+
+}
+
+.main-menu .nav-icon {
+    position: relative;
+    display: table-cell;
+    width: 60px;
+    height: 36px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+}
+
+.main-menu .nav-text {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    width: 190px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.main-menu>ul.logout {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.no-touch .scrollable.hover {
+    overflow-y: hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+    overflow-y: auto;
+    overflow: visible;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+}
+
+nav {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+nav ul,
+nav li {
+    outline: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.main-menu li:hover>a,
+nav.main-menu li.active>a,
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus,
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:hover,
+.dropdown-menu>.active>a:focus,
+.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+.dashboard-page nav.dashboard-menu ul li.active a {
+    color: #fff;
+    background-color: #000000;
+}
+
+.area{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+/* .area {
+    float: left;
+    background: #e2e2e2;
+    width: 100%;
+    height: 100%;
+} */
+
+@font-face {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}
+
+
+
+/* 
+██       ██████   ██████  ██ ███    ██ 
+██      ██    ██ ██       ██ ████   ██ 
+██      ██    ██ ██   ███ ██ ██ ██  ██ 
+██      ██    ██ ██    ██ ██ ██  ██ ██ 
+███████  ██████   ██████  ██ ██   ████  */
+
+.login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.login__wrapper {
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+
+}
+
+.login__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 50vh;
+}
+
+.logo {
+    width: 100%;
+    height: 100%
+}
+
+.login__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.input__label {
+    color: var(--textoPlano);
+}
+
+.input__input {
+    border-radius: 7px;
+    color: var(--placeholders);
+    padding: 5px;
+}
+
+.boton--login {
+    background-color: var(--background-inputs);
+    border: solid 2px #fff;
+    border-radius: 7px;
+    padding: 5px;
+    color: #fff;
+}
+
+.boton--login:hover {
+    transition: 0.50s;
+    background-color: var(--buttonHoverText);
+    cursor: pointer;
+}
+
+/* 
+███    ██ ██    ██ ███████ ██    ██  ██████       ██████ ██      ██ ███████ ███    ██ ████████ ███████ 
+████   ██ ██    ██ ██      ██    ██ ██    ██     ██      ██      ██ ██      ████   ██    ██    ██      
+██ ██  ██ ██    ██ █████   ██    ██ ██    ██     ██      ██      ██ █████   ██ ██  ██    ██    █████   
+██  ██ ██ ██    ██ ██       ██  ██  ██    ██     ██      ██      ██ ██      ██  ██ ██    ██    ██      
+██   ████  ██████  ███████   ████    ██████       ██████ ███████ ██ ███████ ██   ████    ██    ███████ 
+                                                                                                        */
+
+.contForm {
+    margin-top: 5px;
+    width: 80%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: var(--background-form);
+}
+
+.campos {
+
+    margin: 30px;
+    align-items: center;
+    display: grid;
+    grid-template-areas: "LABEL INPUT";
+}
+
+.contForm .campos {
+    grid-area: INPUT;
+    width: 100%;
+}
+
+.contForm label {
+    grid-area: LABEL;
+    width: 50%;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 460px) {
+    .contForm {
+        width: 100%;
+    }
+
+    .campos {
+        grid-template-areas: "LABEL"
+            "INPUT";
+    }
+
+    .conftForm label {
+        width: 100%;
+    }
+
+}
+
+/* 
+██     ██ ██ ██████   ██████  ███████ ████████ ███████ 
+██     ██ ██ ██   ██ ██       ██         ██    ██      
+██  █  ██ ██ ██   ██ ██   ███ █████      ██    ███████ 
+██ ███ ██ ██ ██   ██ ██    ██ ██         ██         ██ 
+ ███ ███  ██ ██████   ██████  ███████    ██    ███████ 
+                                                       */
+
+.widgets {
+    width: 200px;
+    height: 51px;
+    border-radius: 10px;
+    background-color: var(--background-widgets);
+}
+
+.widgets__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+}
+
+p,
+h4 {
+    color: var(--negro) !important;
+}
+
+/* 
+███    ███  ██████  ██████   █████  ██      
+████  ████ ██    ██ ██   ██ ██   ██ ██      
+██ ████ ██ ██    ██ ██   ██ ███████ ██      
+██  ██  ██ ██    ██ ██   ██ ██   ██ ██      
+██      ██  ██████  ██████  ██   ██ ███████ */
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    width: 500px;
+    min-height: 246px;
+    background: #F5EEEE;
+    position: relative;
+    border-radius: 25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 20px;
+}
+
+.modal__cerrar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+
+}
+
+.modal__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space space-between;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E8E8E8;
+
+}
+
+.modal__body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.modal__footer {
+    display: flex;
+    height: 117px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.icons {
+    width: 100px;
+    height: 100px;
+}
+
+/* 
+██████  ███████ ███    ██ ██████  ██ ███████ ███    ██ ████████ ███████ ███████ 
+██   ██ ██      ████   ██ ██   ██ ██ ██      ████   ██    ██    ██      ██      
+██████  █████   ██ ██  ██ ██   ██ ██ █████   ██ ██  ██    ██    █████   ███████ 
+██      ██      ██  ██ ██ ██   ██ ██ ██      ██  ██ ██    ██    ██           ██ 
+██      ███████ ██   ████ ██████  ██ ███████ ██   ████    ██    ███████ ███████ */
+
+.containerFacturas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    height: 40vh;
+}
+
+.Facturas {
+    margin-top: 5px;
+    width: 80%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: var(--background-form);
+}
+
+/* .Timbradas {
+    margin-top: 5px;
+    width: 80%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: var(--background-form);
+
+} */
