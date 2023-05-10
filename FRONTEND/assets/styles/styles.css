@@ -5,10 +5,6 @@
 ██    ██ ██      ██    ██ ██   ██ ██   ██ ██      ██           ██ 
  ██████  ███████  ██████  ██████  ██   ██ ███████ ███████ ███████  */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 * {
     margin: 0;
     padding: 0;
@@ -17,11 +13,11 @@
 
 :root {
     --background-color: #0167ac;
-    --background-sidebar: rgba(0, 0, 0, 0.2);
+    --background-sidebar: #212121;
     --background-form: #e6e9f7;
     --textoPlano: #ffff;
     --placeholders: #979797;
-    --background-widgets: #B7EAFA;
+    --background-widgets: #212121;
     --background-inputs: #0167ac;
     --blanco: #FFFFFF;
     --negro: #000;
@@ -34,9 +30,10 @@ html {
 
 body {
     background-color: var(--background-color);
-
+    font-family: 'Roboto', sans-serif;
 }
 
+h3,
 p,
 a {
     color: var(--textoPlano);
@@ -112,7 +109,7 @@ nav.main-menu.expanded {
 }
 
 .main-menu {
-    background: #212121;
+    background: var(--background-sidebar);
     border-right: 1px solid #e5e5e5;
     position: absolute;
     top: 0;
@@ -218,7 +215,7 @@ nav.main-menu li.active>a,
     background-color: #000000;
 }
 
-.area{
+.area {
     width: 100%;
     height: 100vh;
     display: flex;
