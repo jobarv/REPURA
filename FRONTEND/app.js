@@ -11,7 +11,8 @@ const modalFactura = () => {
     showCancelButton: true,
     focusConfirm: false,
     confirmButtonText:
-      '<i class="fa fa-circle-check" style="color: #1dac1b;"></i>Si',
+    
+      '<a href="./nuevaFactura.html"><i class="fa fa-circle-check" style="color: #1dac1b;"></i>Si</a>',
     // confirmButtonAriaLabel: 'Thumbs up, great!',
     cancelButtonText:
       '<i class="fa fa-thumbs-down"></i>No',
