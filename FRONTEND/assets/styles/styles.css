@@ -43,6 +43,14 @@ a {
     display: block;
 }
 
+.boton {
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+    transition: 0.2;
+    font-size: 18px;
+}
+
 
 /* 
 ███    ███  █████  ██ ███    ██      ██████  ██████  ███    ██ ████████  █████  ██ ███    ██ ███████ ██████  
