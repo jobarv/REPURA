@@ -3,10 +3,11 @@ const path = require('path');
 const mysql = require("mysql");
 const dotenv = require('dotenv');
 
-dotenv.config({ path: './config.env'})
+dotenv.config({ path: './config.env' })
 
 const app = express();
 
+//Conexion a la base de datos
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
@@ -15,9 +16,14 @@ const db = mysql.createConnection({
 
 })
 
+//Desde donde se trae la condiguracion public
 const publicDirectory = path.join(__dirname, './public');
-
 app.use(express.static(publicDirectory));
+
+//Parse URL-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded({ extended: false }));
+//Parse JSON bodies (as sent by API clients)
+app.use(express.json());
 
 console.log(__dirname);
 
@@ -31,11 +37,12 @@ db.connect((error) => {
     }
 })
 
-app.get("/", (req, res) => {
-    // res.send("<h1>Home Page</h1>")
-    res.render("index")
-});
+//Define las rutas
+app.use('/', require('./routes/pages'));
+app.use('/auth', require('./routes/auth'));
 
+
+//Puerto en el que corre el server
 app.listen(5000, () => {
     console.log("El servidor esta corriendo en el puerto 5000");
 })

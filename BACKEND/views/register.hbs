@@ -11,7 +11,7 @@
         integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="/css/styles.css">
-    <title>RePura</title>
+    <title>RePura - Registro</title>
 </head>
 
 <body>
@@ -24,19 +24,34 @@
             </div>
 
             <div class="login__form">
-                <form class="form" action="">
+                <h4>Registro de Nuevo Usuario</h4>
+                <form class="form" action="/auth/register" method="POST">
 
+                    <h5>Ingresa un nombre de Usuario</h5>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
                         <input type="text" class="form-control" placeholder="Usuario" aria-label="Usuario"
                             aria-describedby="basic-addon1" id="username" name="username">
                     </div>
-
+                    <h5>Ingresa tu correo electrónico</h5>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Email"
+                            aria-describedby="basic-addon1" id="email" name="email">
+                    </div>
+                    <h5>Ingresa una contraseña</h5>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="password"><i class="fa-solid fa-lock"></i></span>
                         <input type="password" class="form-control" placeholder="Password" aria-label="Password"
                             aria-describedby="basic-addon1" id="password" name="password">
                     </div>
+                    <h5>Confirma la contraseña</h5>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="password"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" class="form-control" placeholder="Password" aria-label="Password"
+                            aria-describedby="basic-addon1" id="passwordConfirm" name="passwordConfirm">
+                    </div>
+
                     <div id="passwordHelpBlock" class="form-text" style="color:white;">
 
 
@@ -45,11 +60,14 @@
 
                     </div>
                     <button class="boton--login" type="submit">
-                        Enviar
+                        Registrar Nuevo Usuario
                     </button>
                 </form>
             </div>
         </div>
+        {{#if message}}
+        <h4 class="alert alert-danger mt-4">{{message}} </h4>
+        {{/if}}
     </div>
     <!-- LIBRERIAS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
