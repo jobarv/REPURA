@@ -1,4 +1,5 @@
 const express = require("express");
+const session = require('express-session');
 const path = require('path');
 const mysql = require("mysql");
 const dotenv = require('dotenv');
@@ -19,6 +20,18 @@ const db = mysql.createConnection({
 //Desde donde se trae la condiguracion public
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
+
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
+
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
+
+
 
 //Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: false }));
