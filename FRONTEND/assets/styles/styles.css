@@ -34,6 +34,7 @@ body {
 }
 
 h3,
+h4,
 p,
 a {
     color: var(--textoPlano);
@@ -41,6 +42,26 @@ a {
 
 a {
     display: block;
+}
+
+
+.area {
+    /* margin: 0 200px; */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+
+}
+
+.wrapper {
+    margin: 0 300px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "a b";
+    justify-items: flex-start;
+    align-items: flex-start;
 }
 
 .boton {
@@ -52,6 +73,15 @@ a {
 }
 
 
+.boton:hover {
+    transition: 0.50s;
+    background-color: var(--buttonHoverText);
+    cursor: pointer;
+}
+
+
+
+
 /* 
 ███    ███  █████  ██ ███    ██      ██████  ██████  ███    ██ ████████  █████  ██ ███    ██ ███████ ██████  
 ████  ████ ██   ██ ██ ████   ██     ██      ██    ██ ████   ██    ██    ██   ██ ██ ████   ██ ██      ██   ██ 
@@ -60,14 +90,7 @@ a {
 ██      ██ ██   ██ ██ ██   ████      ██████  ██████  ██   ████    ██    ██   ██ ██ ██   ████ ███████ ██   ██  */
 
 
-.wrapper {
-    margin: 0 300px;
-    display: grid;
-    grid-template-columns: 20% 80%;
-    grid-template-areas: "a b";
-    justify-items: flex-start;
-    align-items: flex-start;
-}
+
 
 /*   
    ██████  ███████ ███    ██ ███████ ██████   █████  ██           ██████  ██████  ███    ██ ████████  █████  ██ ███    ██ ███████ ██████  
@@ -223,14 +246,6 @@ nav.main-menu li.active>a,
     background-color: #000000;
 }
 
-.area {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-}
-
 /* .area {
     float: left;
     background: #e2e2e2;
@@ -324,6 +339,42 @@ nav.main-menu li.active>a,
 }
 
 /* 
+███    ██ ██    ██ ███████ ██    ██  █████  ███████  █████   ██████ ████████ ██    ██ ██████   █████  
+████   ██ ██    ██ ██      ██    ██ ██   ██ ██      ██   ██ ██         ██    ██    ██ ██   ██ ██   ██ 
+██ ██  ██ ██    ██ █████   ██    ██ ███████ █████   ███████ ██         ██    ██    ██ ██████  ███████ 
+██  ██ ██ ██    ██ ██       ██  ██  ██   ██ ██      ██   ██ ██         ██    ██    ██ ██   ██ ██   ██ 
+██   ████  ██████  ███████   ████   ██   ██ ██      ██   ██  ██████    ██     ██████  ██   ██ ██   ██ */
+
+.form--factura {
+    color: var(--textoPlano);
+
+}
+
+.campos {
+    width: 100%;
+    padding: 5px;
+    /* height: 70px; */
+    display: flex;
+    flex-direction: column;
+}
+.boton--nuevaFactura{
+    background-color: var(--background-color);
+    border-radius: 7px;
+    border-color: transparent;
+    color: white;
+    transition: 0.2;
+    font-size: 18px;
+}
+
+
+.boton--nuevaFactura {
+    transition: 0.50s;
+    background-color: var(--buttonHoverText);
+    cursor: pointer;
+}
+
+
+/* 
 ███    ██ ██    ██ ███████ ██    ██  ██████       ██████ ██      ██ ███████ ███    ██ ████████ ███████ 
 ████   ██ ██    ██ ██      ██    ██ ██    ██     ██      ██      ██ ██      ████   ██    ██    ██      
 ██ ██  ██ ██    ██ █████   ██    ██ ██    ██     ██      ██      ██ █████   ██ ██  ██    ██    █████   
@@ -339,13 +390,13 @@ nav.main-menu li.active>a,
     background-color: var(--background-form);
 }
 
-.campos {
+/* .campos {
 
     margin: 30px;
     align-items: center;
     display: grid;
     grid-template-areas: "LABEL INPUT";
-}
+} */
 
 .contForm .campos {
     grid-area: INPUT;
@@ -403,10 +454,10 @@ nav.main-menu li.active>a,
     align-content: flex-start;
 }
 
-p,
+/* p,
 h4 {
     color: var(--negro) !important;
-}
+} */
 
 /* 
 ███    ███  ██████  ██████   █████  ██      
