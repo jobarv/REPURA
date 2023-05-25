@@ -15,11 +15,12 @@ const db = mysql.createConnection({
 exports.register = (req, res) => {
     console.log(req.body);
 
-    // const name = req.body.username;
+    const { username, email, password, passwordConfirm } = req.body;
+
+    // const username = req.body.username;
+    // const email = req.body.email;
     // const password = req.body.password;
     // const passwordConfirm = req.body.passwordConfirm;
-
-    const { username, email, password, passwordConfirm } = req.body;
 
     db.query('SELECT email FROM users WHERE email = ?', [email], async (error, results) => {
         if (error) {
@@ -48,45 +49,50 @@ exports.register = (req, res) => {
                 });
             }
         })
-
     });
 }
-exports.login = (req, res) => {
-    // Capture the input fields
-    let { username, password } = req.body;
 
-    // Ensure the input fields exists and are not empty
-    if (username && password) {
-        // Execute SQL query that'll select the account from the database based on the specified username and password
-        db.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], (error, results, fields) => {
-            // If there is an issue with the query, output the error
-            if (error) throw error;
-            // If the account exists
-            if (results.length > 0) {
-                // Authenticate the user
-                req.session.loggedin = true;
-                req.session.username = username;
-                // Redirect to home page
-                res.redirect('/dashboard');
-            } else {
-                res.send('Incorrect Username and/or Password!');
-            }
-            res.end();
-        });
-    } else {
-        res.send('Please enter Username and Password!');
-        res.end();
-    }
-    // http://localhost:5000/
-    app.get('/', function (req, res) {
-        // If the user is loggedin
-        if (req.session.loggedin) {
-            // Output username
-            res.send('Welcome back, ' + req.session.username + '!');
-        } else {
-            // Not logged in
-            res.send('Please login to view this page!');
+exports.login = (req, res) => {
+    try {
+        const { username, password } = req.body;
+        console.log({ username, password })
+        if (!username || !password) {
+            return res.status(400).render('login', {
+                message: 'Por favor ingresa un usuario y contraseña'
+            })
         }
-        res.end();
-    });
+
+        db.query('SELECT * FROM users WHERE username = ?', [username], async (error, results) => {
+            console.log(results);
+
+            if (!results || !(await bcrypt.compare(password, results[0].password))) {
+                res.status(401).render('login', {
+                    message: 'El usuario o la contraseña son incorrectos'
+                })
+            } else {
+                const id = results[0].id;
+
+                const token = jwt.sign({ id }, process.env.JWT_SECRET, {
+                    expiresIn: process.env.JWT_EXPIRES_IN
+                });
+                console.log("The token is:" + token);
+
+                const cookieOptions = {
+                    expires: new Date(
+                        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+                    ),
+                    httpOnly: true
+                }
+                res.cookie('jwt', token, cookieOptions);
+                res.status(200).redirect('dashboard');
+            }
+        })
+    } catch (error) {
+        console.log(error);
+
+    }
+
+}
+exports.dashboard = (req, res) => {
+    res.status(200).render('dashboard');
 }

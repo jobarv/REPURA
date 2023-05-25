@@ -3,6 +3,7 @@ const session = require('express-session');
 const path = require('path');
 const mysql = require("mysql");
 const dotenv = require('dotenv');
+const cookieParser = require("cookie-parser");
 
 dotenv.config({ path: './config.env' })
 
@@ -17,17 +18,18 @@ const db = mysql.createConnection({
 
 })
 
-//Desde donde se trae la condiguracion public
+//Desde donde se trae la configuracion public
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
 
 app.use(session({
-	secret: 'secret',
-	resave: true,
-	saveUninitialized: true
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
 }));
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: true }));
 
