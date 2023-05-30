@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <!-- FontAwesome 5 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
+
 <body>
     <!-- Navbar top -->
     <div class="navbar-top">
@@ -33,7 +35,7 @@
                 </a>
             </li>
             <li>
-                <a href="/login">
+                <a href="/auth/logout">
                     <i class="fa fa-sign-out-alt fa-2x"></i>
                 </a>
             </li>
@@ -45,8 +47,11 @@
     <!-- Sidenav -->
     <div class="sidenav">
         <div class="profile">
-            <img src="/img/RepuraLogoNew 1.svg" alt="" width="100" height="100">
+            <a href="/auth/dashboard">
 
+                <img src="/img/RepuraLogoNew 1.svg" alt="" width="100" height="100">
+
+            </a>
             <div class="name">
                 Usuario de Prueba
             </div>
@@ -70,49 +75,36 @@
 
     <!-- Main -->
     <div class="main">
-        <h2>IDENTITY</h2>
+        <h2>Hola {{user.username}}</h2>
         <div class="card">
             <div class="card-body">
                 <i class="fa fa-pen fa-xs edit"></i>
                 <table>
                     <tbody>
                         <tr>
-                            <td>Name</td>
+                            <td>Nombre del Cliente</td>
                             <td>:</td>
-                            <td>ImDezCode</td>
+                            <td>{{user.empresa}}</td>
                         </tr>
                         <tr>
                             <td>Email</td>
                             <td>:</td>
-                            <td>imdezcode@gmail.com</td>
+                            <td>{{user.email}}</td>
                         </tr>
                         <tr>
-                            <td>Address</td>
+                            <td>Dirección</td>
                             <td>:</td>
-                            <td>Bali, Indonesia</td>
+                            <td>{{user.direccion}}</td>
                         </tr>
-                        <tr>
-                            <td>Hobbies</td>
-                            <td>:</td>
-                            <td>Diving, Reading Book</td>
-                        </tr>
-                        <tr>
-                            <td>Job</td>
-                            <td>:</td>
-                            <td>Web Developer</td>
-                        </tr>
-                        <tr>
-                            <td>Skill</td>
-                            <td>:</td>
-                            <td>PHP, HTML, CSS, Java</td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>
         </div>
 
-        
+
     </div>
     <!-- End -->
 </body>
+
 </html>

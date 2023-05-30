@@ -1,6 +1,7 @@
 const mysql = require("mysql");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const { promisify } = require('util');
 
 
 //Conexion a la base de datos
@@ -95,4 +96,43 @@ exports.login = (req, res) => {
 }
 exports.dashboard = (req, res) => {
     res.status(200).render('dashboard');
+}
+
+exports.isLoggedIn = async (req, res, next) => {
+    // console.log(req.cookies);
+    if (req.cookies.jwt) {
+        try {
+            //1) VERIFICA EL TOKEN
+            const decoded = await promisify(jwt.verify)(req.cookies.jwt,
+                process.env.JWT_SECRET
+            );
+
+
+            //2) CHECA SI EL USUARIO EXISTE TODAVÍA
+            db.query('SELECT * FROM users WHERE id = ?', [decoded.id], (error, result) => {
+                console.log(result);
+
+                if (!result) {
+                    return next();
+                }
+                req.user = result[0];
+                return next()
+            });
+        } catch (error) {
+            console.log(error);
+            return next();
+
+        }
+    } else {
+
+        next();
+    }
+
+}
+exports.logout = async (req, res) => {
+    res.cookie('jwt', 'logout', {
+        expires: new Date(Date.now() + 2 * 1000),
+        httpOnly: true
+    });
+    res.status(200).redirect('/')
 }
